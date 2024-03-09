@@ -10,27 +10,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/milkfarm")
 public class MilkDairyFarmController {
-	private final MilkDairyFarmService milkDairyFarmService;
+    private final MilkDairyFarmService milkDairyFarmService;
 
     public MilkDairyFarmController(MilkDairyFarmService milkDairyFarmService) {
-    	// your code goes here
+        this.milkDairyFarmService = milkDairyFarmService;
     }
 
     @PostMapping("/addcow")
     public Cow addCow(@RequestBody Cow cow) {
-    	// your code goes here
         return milkDairyFarmService.addCow(cow);
     }
 
     @GetMapping("/milkproduction/{cowId}")
     public Cow getMilkProduction(@PathVariable int cowId) {
-    	// your code goes here
         return milkDairyFarmService.getMilkProduction(cowId);
     }
 
     @GetMapping("/totalmilkproduction")
     public double getTotalMilkProduction() {
-    	// your code goes here
         return milkDairyFarmService.getTotalMilkProduction();
     }
 }
